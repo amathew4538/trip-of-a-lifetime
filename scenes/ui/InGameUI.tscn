@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx6e1amy5b53y"]
+
+[ext_resource type="Script" uid="uid://cmntiejrdfvl5" path="res://assets/scripts/ui/InGameUI.gd" id="1_w502u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w502u"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d7rcq"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5fida"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w502u")
+
+[node name="Stamina" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 1128.0
+offset_top = 128.0
+offset_right = 1136.0
+offset_bottom = 512.0
+theme_override_styles/background = SubResource("StyleBoxFlat_w502u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_d7rcq")
+fill_mode = 3
+show_percentage = false
+
+[node name="Health" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 128.0
+offset_right = 26.0
+offset_bottom = 512.0
+theme_override_styles/background = SubResource("StyleBoxFlat_w502u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5fida")
+fill_mode = 3
+show_percentage = false
