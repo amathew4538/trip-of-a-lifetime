@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx6e1amy5b53y"]
+[gd_scene load_steps=6 format=3 uid="uid://dx6e1amy5b53y"]
 
 [ext_resource type="Script" uid="uid://cmntiejrdfvl5" path="res://assets/scripts/ui/InGameUI.gd" id="1_w502u"]
+[ext_resource type="Script" uid="uid://dk7xt8jnsaer" path="res://assets/scripts/ui/ammo_counter.gd" id="2_5fida"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w502u"]
 bg_color = Color(0, 0, 0, 1)
@@ -35,9 +36,9 @@ script = ExtResource("1_w502u")
 [node name="Stamina" type="ProgressBar" parent="."]
 layout_mode = 0
 offset_left = 1128.0
-offset_top = 128.0
+offset_top = 64.0
 offset_right = 1136.0
-offset_bottom = 512.0
+offset_bottom = 448.0
 theme_override_styles/background = SubResource("StyleBoxFlat_w502u")
 theme_override_styles/fill = SubResource("StyleBoxFlat_d7rcq")
 fill_mode = 3
@@ -45,11 +46,20 @@ show_percentage = false
 
 [node name="Health" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 128.0
-offset_right = 26.0
-offset_bottom = 512.0
+offset_left = 1104.0
+offset_top = 64.0
+offset_right = 1112.0
+offset_bottom = 448.0
 theme_override_styles/background = SubResource("StyleBoxFlat_w502u")
 theme_override_styles/fill = SubResource("StyleBoxFlat_5fida")
 fill_mode = 3
 show_percentage = false
+
+[node name="AmmoCounter" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_top = 608.0
+offset_right = 128.0
+offset_bottom = 648.0
+theme_override_font_sizes/normal_font_size = 32
+scroll_active = false
+script = ExtResource("2_5fida")

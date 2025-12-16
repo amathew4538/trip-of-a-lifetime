@@ -50,6 +50,9 @@ func _find_movement_sprint_in_node(root: Node) -> Node:
 
 
 func _process(delta: float) -> void:
+	
+	$Health.value = PlayerGlobalVariables.player_health
+	
 	# Drain while sprinting
 	if _is_sprinting and stamina > 0.0:
 		_recover_timer = 0.0

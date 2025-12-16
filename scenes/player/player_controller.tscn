@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ds636ii1dlmo2"]
+[gd_scene load_steps=12 format=3 uid="uid://ds636ii1dlmo2"]
 
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="1_m7hbg"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_0nonk"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dup2vp8v5rpi5" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_tac_glove.tscn" id="6_rkuj1"]
 [ext_resource type="PackedScene" uid="uid://drs4eeq721ojn" path="res://addons/godot-xr-tools/functions/movement_sprint.tscn" id="7_nwn0c"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="8_2k8ub"]
+[ext_resource type="Script" uid="uid://b70l60rjpdbh3" path="res://assets/scripts/player/player_global_variables.gd" id="10_ers80"]
 
 [sub_resource type="Resource" id="Resource_nwn0c"]
 script = ExtResource("3_rkuj1")
@@ -44,3 +45,6 @@ tracker = &"right_hand"
 jump_button_action = "ax_button"
 
 [node name="MovementSprint" parent="." instance=ExtResource("7_nwn0c")]
+
+[node name="Global_Variables" type="Node3D" parent="."]
+script = ExtResource("10_ers80")
