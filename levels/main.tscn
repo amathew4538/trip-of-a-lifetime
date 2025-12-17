@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfiumnk8jstxm"]
+[gd_scene load_steps=15 format=3 uid="uid://cfiumnk8jstxm"]
 
 [ext_resource type="PackedScene" uid="uid://cynwfjxbmdffr" path="res://scenes/environment/world_environment.tscn" id="1_m1504"]
 [ext_resource type="PackedScene" uid="uid://ds636ii1dlmo2" path="res://scenes/player/player_controller.tscn" id="2_ifaiv"]
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="3_5k4jt"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="4_qy63d"]
+[ext_resource type="Script" uid="uid://dpqstfyj0h2ou" path="res://assets/scripts/system/gun_shoot.gd" id="5_qy63d"]
+[ext_resource type="ArrayMesh" uid="uid://covkopi330mq" path="res://assets/weapons/best_gun.obj" id="6_qy63d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6b0q"]
 albedo_color = Color(0.3515629, 0.3515629, 0.35156286, 1)
@@ -24,6 +26,12 @@ size = Vector3(0.1, 0.1, 0.1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hhmht"]
 points = PackedVector3Array(0.05, 0.05, 0.05, 0.05, 0.05, -0.05, -0.05, 0.05, 0.05, 0.05, -0.05, 0.05, 0.05, -0.05, -0.05, -0.05, 0.05, -0.05, -0.05, -0.05, 0.05, -0.05, -0.05, -0.05)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6et1j"]
+points = PackedVector3Array(-1.1319734, -3.9765062, -1.045675, 1.247275, 5.013526, 1.3338063, -1.1319734, 5.013526, 1.3338063, 1.247275, 5.013526, -2.632384, 1.247275, -3.9765062, 1.0690312, -1.1319734, 5.013526, -2.632384, -1.1319734, -3.9765062, 1.0690312, 1.247275, -3.9765062, -1.045675, 0.718372, 1.5745041, -2.632384, -0.6030704, 1.5745041, -2.632384, 1.247275, 2.6331387, 1.3338063, 1.247275, 2.6331387, -2.632384, -1.1319734, 2.6331387, -2.632384, -1.1319734, 2.6331387, 1.3338063)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_etqu2"]
+points = PackedVector3Array(1.247275, 5.013293, -2.6336517, -1.1319734, 2.6338115, -15.588606, 1.247275, 2.6338115, -15.588606, -1.1319734, 2.6338115, -2.6336517, -1.1319734, 5.013293, -15.588606, 1.247275, 5.013293, -15.588606, 1.247275, 2.6338115, -2.6336517, -1.1319734, 5.013293, -2.6336517)
+
 [node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_m1504")]
@@ -33,7 +41,7 @@ points = PackedVector3Array(0.05, 0.05, 0.05, 0.05, 0.05, -0.05, -0.05, 0.05, 0.
 [node name="StartXR" parent="." instance=ExtResource("3_5k4jt")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.2782035, 0, 0, 0, 0.08135831, 0, 0, 0, 5.343432, 0, -1.5537645, 0)
+transform = Transform3D(5.2782035, 0, 0, 0, 0.08135831, 0, 0, 0, 5.343432, 0, -0.47376764, 0)
 mesh = SubResource("PlaneMesh_h6b0q")
 skeleton = NodePath("")
 
@@ -55,3 +63,24 @@ mesh = SubResource("BoxMesh_lcfuw")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="PickableObject"]
 shape = SubResource("ConvexPolygonShape3D_hhmht")
+
+[node name="Gun_Placeholder" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17481408, 0.61374575, -0.4335878)
+script = ExtResource("5_qy63d")
+bullet_scene = null
+muzzle_path = null
+fire_rate = null
+bullet_speed = null
+metadata/_custom_type_script = "uid://bfrlpbsqg5lqr"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Gun_Placeholder"]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, 0, 0)
+mesh = ExtResource("6_qy63d")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Gun_Placeholder"]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_6et1j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gun_Placeholder"]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_etqu2")
