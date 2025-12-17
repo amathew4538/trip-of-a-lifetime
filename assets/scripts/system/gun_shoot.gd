@@ -22,9 +22,15 @@ func _on_action_pressed(_pickable) -> void:
 	# Only fire while held
 	if not is_picked_up():
 		return
+	# prevent firing with no ammo
+	if PlayerGlobalVariables.ammo <= 0:
+		return
 	# enforce cooldown
 	if _cooldown > 0.0:
 		return
+
+	# consume ammo
+	PlayerGlobalVariables.ammo = max(0, PlayerGlobalVariables.ammo - 1)
 
 	# find muzzle
 	var muzzle : Node = null
